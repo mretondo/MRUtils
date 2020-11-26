@@ -8,11 +8,13 @@
 
 import Foundation
 
-// A sorting predicate that returns `true` if the first
-// value should be ordered before the second.
+/// A sorting predicate that returns `true` if the first
+/// value should be ordered before the second.
 public typealias SortDescriptor<Root> = (Root, Root) -> Bool
 
-// Function that returns a Boolean value, because that's the standard library's convention for comparison predicates
+/// Returns a Bool value, because that's the standard library's convention for comparison predicates
+/// - Parameter key: (Root) -> Value
+/// - Parameter areInIncreasingOrder: (Value, Value) -> Bool
 public func sortDescriptor<Root, Value> (
     key: @escaping (Root) -> Value,
     by areInIncreasingOrder: @escaping (Value, Value) -> Bool) -> SortDescriptor<Root>
@@ -20,7 +22,15 @@ public func sortDescriptor<Root, Value> (
     return { areInIncreasingOrder(key($0), key($1)) }
 }
 
-// Overloaded variant of above function that works for all Comparable types
+///
+/// Function that works for all Comparable types.
+///
+/// Overloaded variant of function:
+///
+///     public func sortDescriptor<Root, Value> (
+///         key: @escaping (Root) -> Value,
+///         by areInIncreasingOrder: @escaping (Value, Value) -> Bool) -> SortDescriptor<Root>
+/// - Parameter key: (Root) -> Value
 public func sortDescriptor<Root, Value>( key: @escaping (Root) -> Value) -> SortDescriptor<Root>
     where Value: Comparable
 {
@@ -29,6 +39,19 @@ public func sortDescriptor<Root, Value>( key: @escaping (Root) -> Value) -> Sort
 
 // Overloaded variant of above functions for Foundation APIs like String:localizedStandardCompare(_:)
 // which expect a three-way ComparisonResult value instead (ordered ascending, descending, or equal)
+
+///
+/// Function for Foundation APIs like String:localizedStandardCompare(_:) which expect a three-way
+/// enum ComparisonResult (.orderedAscending, .orderedDescending, .orderedSame)
+///
+/// Overloaded variant of function:
+///
+///     public func sortDescriptor<Root, Value> (
+///         key: @escaping (Root) -> Value,
+///         by areInIncreasingOrder: @escaping (Value, Value) -> Bool) -> SortDescriptor<Root>
+/// - Parameter key: (Root) -> Value
+/// - Parameter ascending: true if ascending else false
+/// - Parameter comparator: (Value) -> (Value) -> ComparisonResult
 public func sortDescriptor<Root, Value> (
     key: @escaping (Root) -> Value,
     ascending: Bool = true,
@@ -44,6 +67,11 @@ public func sortDescriptor<Root, Value> (
 /// First it tries the first descriptor and uses that comparison result.
 /// However, if the result is equal, it uses the second descriptor, and
 /// so on, until we run out of descriptors.
+///
+///     let sortByFirstName: SortDescriptor<Person> = sortDescriptor(key: { $0.first }, by: String.localizedStandardCompare)
+///     let sortByLastName: SortDescriptor<Person> = sortDescriptor(key: { $0.last }, by: String.localizedStandardCompare)
+///     var combinedSortDescriptors: SortDescriptor<Person> = combine(sortDescriptors: [sortByLastName, sortByFirstName)
+///
 /// - Parameter sortDescriptors: [SortDescriptor]
 public func combine<Root> (sortDescriptors: [SortDescriptor<Root>]) -> SortDescriptor<Root>
 {
@@ -64,27 +92,29 @@ public func combine<Root> (sortDescriptors: [SortDescriptor<Root>]) -> SortDescr
 }
 
 ///
-/// lift() allows us to “lift” a regular comparison function into the domain of optionals, and
-/// it can be used together with our sortDescriptor function. It takes a regular comparison
-/// function such as String:localizedStandardCompare(_:), which works on two objects, 'self'
-/// and the object passed to it. It then turns it into a function that takes two optional
-/// objects e.g. (lhs: String?, rhs: String?) -> ComparisonResult.
+/// lift() allows you to “lift” a regular comparison function into the domain of optionals, and
+/// it can be used together with our sortDescriptor function.
 ///
-/// Example:
-/// extension String {
-///     var fileExtension: String? {
-///         guard let period = lastIndex(of: ".") else { return nil }
+/// It takes a regular comparison function such as String:localizedStandardCompare(_:),
+/// which works on two objects, 'self' and the object passed to it. It then turns it into a
+/// function that takes two optional objects e.g. (lhs: String?, rhs: String?) -> ComparisonResult.
 ///
-///         let extensionStart = index(after: period)
-///         return String(self[extensionStart...])
+///     extension String {
+///         var fileExtension: String? {
+///             guard let period = lastIndex(of: ".") else { return nil }
+///
+///             let extensionStart = index(after: period)
+///             return String(self[extensionStart...])
+///         }
 ///     }
-/// }
 ///
-///  var files = ["file.swift", "one", "two", "test.h", "three", "file.h", "file.", "file.c"]
-///  let compare = lift(String.localizedStandardCompare)
-///      'compare(lhs: String?, rhs: String?) -> ComparisonResult'
-///  let result = files.sorted(by: sortDescriptor(key: { $0.fileExtension }, by: compare))
-///      result equals ["one", "two", "three", "file.", "file.c", "test.h", "file.h", "file.swift"]
+///     var files = ["file.swift", "one", "two", "test.h", "three", "file.h", "file.", "file.c"]
+///
+///     // compare(lhs: String?, rhs: String?) -> ComparisonResult
+///     let compare = lift(String.localizedStandardCompare)
+///
+///     // return ["one", "two", "three", "file.", "file.c", "test.h", "file.h", "file.swift"]
+///     let result = files.sorted(by: sortDescriptor(key: { $0.fileExtension }, by: compare))
 ///
 /// - Parameter compare: a regular comparison compare function such as String:localizedStandardCompare(_:)
 /// - Returns: A ComparisonResult.
