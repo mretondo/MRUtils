@@ -12,7 +12,7 @@ import Foundation
 // value should be ordered before the second.
 public typealias SortDescriptor<Root> = (Root, Root) -> Bool
 
-// Function that return a Boolean value, because that's the standard library's convention for comparison predicates
+// Function that returns a Boolean value, because that's the standard library's convention for comparison predicates
 public func sortDescriptor<Root, Value> (
     key: @escaping (Root) -> Value,
     by areInIncreasingOrder: @escaping (Value, Value) -> Bool) -> SortDescriptor<Root>
@@ -27,8 +27,8 @@ public func sortDescriptor<Root, Value>( key: @escaping (Root) -> Value) -> Sort
     return { key($0) < key($1) }
 }
 
-// Overloaded variant of above functions for Foundation APIs like localizedStandardCompare which
-// expect a three-way ComparisonResult value instead (ordered ascending, descending, or equal)
+// Overloaded variant of above functions for Foundation APIs like String:localizedStandardCompare(_:)
+// which expect a three-way ComparisonResult value instead (ordered ascending, descending, or equal)
 public func sortDescriptor<Root, Value> (
     key: @escaping (Root) -> Value,
     ascending: Bool = true,
@@ -97,5 +97,5 @@ public func lift<A> (_ compare: @escaping (A) -> (A) -> ComparisonResult) -> (A?
         case (_, nil): return .orderedDescending
         case let (l?, r?): return compare(l)(r)
         }
-        }}
+    }}
 }

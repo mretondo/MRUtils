@@ -8,7 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		27AC23E4256E0AD000800A43 /* SortDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AC23E3256E0AD000800A43 /* SortDescriptor.swift */; };
+		27AC23F3256E131F00800A43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AC23F2256E131F00800A43 /* AppDelegate.swift */; };
+		27AC23F5256E131F00800A43 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AC23F4256E131F00800A43 /* SceneDelegate.swift */; };
+		27AC23F7256E131F00800A43 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AC23F6256E131F00800A43 /* ContentView.swift */; };
+		27AC23F9256E132000800A43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27AC23F8256E132000800A43 /* Assets.xcassets */; };
+		27AC23FC256E132000800A43 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27AC23FB256E132000800A43 /* Preview Assets.xcassets */; };
+		27AC23FF256E132000800A43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27AC23FD256E132000800A43 /* LaunchScreen.storyboard */; };
+		27AC2405256E13E600800A43 /* libSortDescriptor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AC23E0256E0AD000800A43 /* libSortDescriptor.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		27AC2406256E13E600800A43 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27AC23D8256E0AD000800A43 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27AC23DF256E0AD000800A43;
+			remoteInfo = SortDescriptor;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		27AC23DE256E0AD000800A43 /* CopyFiles */ = {
@@ -25,6 +42,14 @@
 /* Begin PBXFileReference section */
 		27AC23E0256E0AD000800A43 /* libSortDescriptor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSortDescriptor.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27AC23E3256E0AD000800A43 /* SortDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDescriptor.swift; sourceTree = "<group>"; };
+		27AC23F0256E131F00800A43 /* ConsumerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConsumerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		27AC23F2256E131F00800A43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		27AC23F4256E131F00800A43 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		27AC23F6256E131F00800A43 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		27AC23F8256E132000800A43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		27AC23FB256E132000800A43 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		27AC23FE256E132000800A43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		27AC2400256E132000800A43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +60,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		27AC23ED256E131F00800A43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27AC2405256E13E600800A43 /* libSortDescriptor.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -42,7 +75,9 @@
 			isa = PBXGroup;
 			children = (
 				27AC23E2256E0AD000800A43 /* SortDescriptor */,
+				27AC23F1256E131F00800A43 /* ConsumerApp */,
 				27AC23E1256E0AD000800A43 /* Products */,
+				27AC2404256E13E600800A43 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -50,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				27AC23E0256E0AD000800A43 /* libSortDescriptor.a */,
+				27AC23F0256E131F00800A43 /* ConsumerApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,6 +96,35 @@
 				27AC23E3256E0AD000800A43 /* SortDescriptor.swift */,
 			);
 			path = SortDescriptor;
+			sourceTree = "<group>";
+		};
+		27AC23F1256E131F00800A43 /* ConsumerApp */ = {
+			isa = PBXGroup;
+			children = (
+				27AC23F2256E131F00800A43 /* AppDelegate.swift */,
+				27AC23F4256E131F00800A43 /* SceneDelegate.swift */,
+				27AC23F6256E131F00800A43 /* ContentView.swift */,
+				27AC23F8256E132000800A43 /* Assets.xcassets */,
+				27AC23FD256E132000800A43 /* LaunchScreen.storyboard */,
+				27AC2400256E132000800A43 /* Info.plist */,
+				27AC23FA256E132000800A43 /* Preview Content */,
+			);
+			path = ConsumerApp;
+			sourceTree = "<group>";
+		};
+		27AC23FA256E132000800A43 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				27AC23FB256E132000800A43 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		27AC2404256E13E600800A43 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,6 +147,24 @@
 			productReference = 27AC23E0256E0AD000800A43 /* libSortDescriptor.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		27AC23EF256E131F00800A43 /* ConsumerApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27AC2401256E132000800A43 /* Build configuration list for PBXNativeTarget "ConsumerApp" */;
+			buildPhases = (
+				27AC23EC256E131F00800A43 /* Sources */,
+				27AC23ED256E131F00800A43 /* Frameworks */,
+				27AC23EE256E131F00800A43 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				27AC2407256E13E600800A43 /* PBXTargetDependency */,
+			);
+			name = ConsumerApp;
+			productName = ConsumerApp;
+			productReference = 27AC23F0256E131F00800A43 /* ConsumerApp.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -93,6 +176,9 @@
 				ORGANIZATIONNAME = "Mike Retondo";
 				TargetAttributes = {
 					27AC23DF256E0AD000800A43 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					27AC23EF256E131F00800A43 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
 				};
@@ -111,9 +197,23 @@
 			projectRoot = "";
 			targets = (
 				27AC23DF256E0AD000800A43 /* SortDescriptor */,
+				27AC23EF256E131F00800A43 /* ConsumerApp */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		27AC23EE256E131F00800A43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27AC23FF256E132000800A43 /* LaunchScreen.storyboard in Resources */,
+				27AC23FC256E132000800A43 /* Preview Assets.xcassets in Resources */,
+				27AC23F9256E132000800A43 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		27AC23DC256E0AD000800A43 /* Sources */ = {
@@ -124,7 +224,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		27AC23EC256E131F00800A43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27AC23F3256E131F00800A43 /* AppDelegate.swift in Sources */,
+				27AC23F5256E131F00800A43 /* SceneDelegate.swift in Sources */,
+				27AC23F7256E131F00800A43 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		27AC2407256E13E600800A43 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27AC23DF256E0AD000800A43 /* SortDescriptor */;
+			targetProxy = 27AC2406256E13E600800A43 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		27AC23FD256E132000800A43 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27AC23FE256E132000800A43 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		27AC23E5256E0AD000800A43 /* Debug */ = {
@@ -267,6 +396,46 @@
 			};
 			name = Release;
 		};
+		27AC2402256E132000800A43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"ConsumerApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 58ZACZB2L8;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = ConsumerApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mretondo.ConsumerApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		27AC2403256E132000800A43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"ConsumerApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 58ZACZB2L8;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = ConsumerApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mretondo.ConsumerApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -284,6 +453,15 @@
 			buildConfigurations = (
 				27AC23E8256E0AD000800A43 /* Debug */,
 				27AC23E9256E0AD000800A43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27AC2401256E132000800A43 /* Build configuration list for PBXNativeTarget "ConsumerApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27AC2402256E132000800A43 /* Debug */,
+				27AC2403256E132000800A43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
