@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:SortDescriptor.xcodeproj">
+      location = "self:/Users/mike/Documents/Development/SortDescriptor/MRUtils.xcodeproj">
    </FileRef>
 </Workspace>

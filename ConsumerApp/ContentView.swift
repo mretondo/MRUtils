@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import SortDescriptor
+import MRUtils
 
 //
 // sort array of people with different names and birth years (asending/desending)
@@ -95,6 +95,8 @@ var filesDescending: String {
     return files.description
 }
 
+    var filename = "file.swift"
+
 struct ContentView: View {
     var body: some View {
         VStack(alignment: .leading) {
@@ -103,6 +105,7 @@ struct ContentView: View {
             Text(files.description).padding()
             Text(filesAsending.description).padding()
             Text(filesDescending).padding()
+            Text(filename)
         }
     }
 }

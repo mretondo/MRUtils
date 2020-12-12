@@ -3,45 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		27AC23E4256E0AD000800A43 /* SortDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AC23E3256E0AD000800A43 /* SortDescriptor.swift */; };
 		27AC23F3256E131F00800A43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AC23F2256E131F00800A43 /* AppDelegate.swift */; };
 		27AC23F5256E131F00800A43 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AC23F4256E131F00800A43 /* SceneDelegate.swift */; };
 		27AC23F7256E131F00800A43 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AC23F6256E131F00800A43 /* ContentView.swift */; };
 		27AC23F9256E132000800A43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27AC23F8256E132000800A43 /* Assets.xcassets */; };
 		27AC23FC256E132000800A43 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27AC23FB256E132000800A43 /* Preview Assets.xcassets */; };
 		27AC23FF256E132000800A43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27AC23FD256E132000800A43 /* LaunchScreen.storyboard */; };
-		27AC2405256E13E600800A43 /* libSortDescriptor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AC23E0256E0AD000800A43 /* libSortDescriptor.a */; };
+		27FDFE07257DB0D100E490F5 /* MRUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 27FDFE06257DB0D100E490F5 /* MRUtils */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		27AC2406256E13E600800A43 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 27AC23D8256E0AD000800A43 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 27AC23DF256E0AD000800A43;
-			remoteInfo = SortDescriptor;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		27AC23DE256E0AD000800A43 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		27AC23E0256E0AD000800A43 /* libSortDescriptor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSortDescriptor.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		27AC23E3256E0AD000800A43 /* SortDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDescriptor.swift; sourceTree = "<group>"; };
 		27AC23F0256E131F00800A43 /* ConsumerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConsumerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27AC23F2256E131F00800A43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27AC23F4256E131F00800A43 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,21 +25,15 @@
 		27AC23FB256E132000800A43 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		27AC23FE256E132000800A43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27AC2400256E132000800A43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27FDFE05257DAC9E00E490F5 /* MRUtils */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MRUtils; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		27AC23DD256E0AD000800A43 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		27AC23ED256E131F00800A43 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27AC2405256E13E600800A43 /* libSortDescriptor.a in Frameworks */,
+				27FDFE07257DB0D100E490F5 /* MRUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,7 +43,7 @@
 		27AC23D7256E0AD000800A43 = {
 			isa = PBXGroup;
 			children = (
-				27AC23E2256E0AD000800A43 /* SortDescriptor */,
+				27FDFE05257DAC9E00E490F5 /* MRUtils */,
 				27AC23F1256E131F00800A43 /* ConsumerApp */,
 				27AC23E1256E0AD000800A43 /* Products */,
 				27AC2404256E13E600800A43 /* Frameworks */,
@@ -84,18 +53,9 @@
 		27AC23E1256E0AD000800A43 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				27AC23E0256E0AD000800A43 /* libSortDescriptor.a */,
 				27AC23F0256E131F00800A43 /* ConsumerApp.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		27AC23E2256E0AD000800A43 /* SortDescriptor */ = {
-			isa = PBXGroup;
-			children = (
-				27AC23E3256E0AD000800A43 /* SortDescriptor.swift */,
-			);
-			path = SortDescriptor;
 			sourceTree = "<group>";
 		};
 		27AC23F1256E131F00800A43 /* ConsumerApp */ = {
@@ -130,23 +90,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		27AC23DF256E0AD000800A43 /* SortDescriptor */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 27AC23E7256E0AD000800A43 /* Build configuration list for PBXNativeTarget "SortDescriptor" */;
-			buildPhases = (
-				27AC23DC256E0AD000800A43 /* Sources */,
-				27AC23DD256E0AD000800A43 /* Frameworks */,
-				27AC23DE256E0AD000800A43 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SortDescriptor;
-			productName = SortDescriptor;
-			productReference = 27AC23E0256E0AD000800A43 /* libSortDescriptor.a */;
-			productType = "com.apple.product-type.library.static";
-		};
 		27AC23EF256E131F00800A43 /* ConsumerApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27AC2401256E132000800A43 /* Build configuration list for PBXNativeTarget "ConsumerApp" */;
@@ -158,9 +101,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				27AC2407256E13E600800A43 /* PBXTargetDependency */,
 			);
 			name = ConsumerApp;
+			packageProductDependencies = (
+				27FDFE06257DB0D100E490F5 /* MRUtils */,
+			);
 			productName = ConsumerApp;
 			productReference = 27AC23F0256E131F00800A43 /* ConsumerApp.app */;
 			productType = "com.apple.product-type.application";
@@ -175,16 +120,13 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Mike Retondo";
 				TargetAttributes = {
-					27AC23DF256E0AD000800A43 = {
-						CreatedOnToolsVersion = 11.3.1;
-					};
 					27AC23EF256E131F00800A43 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
 				};
 			};
-			buildConfigurationList = 27AC23DB256E0AD000800A43 /* Build configuration list for PBXProject "SortDescriptor" */;
-			compatibilityVersion = "Xcode 9.3";
+			buildConfigurationList = 27AC23DB256E0AD000800A43 /* Build configuration list for PBXProject "MRUtils" */;
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -196,7 +138,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				27AC23DF256E0AD000800A43 /* SortDescriptor */,
 				27AC23EF256E131F00800A43 /* ConsumerApp */,
 			);
 		};
@@ -216,14 +157,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		27AC23DC256E0AD000800A43 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				27AC23E4256E0AD000800A43 /* SortDescriptor.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		27AC23EC256E131F00800A43 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -235,14 +168,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		27AC2407256E13E600800A43 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 27AC23DF256E0AD000800A43 /* SortDescriptor */;
-			targetProxy = 27AC2406256E13E600800A43 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		27AC23FD256E132000800A43 /* LaunchScreen.storyboard */ = {
@@ -370,32 +295,6 @@
 			};
 			name = Release;
 		};
-		27AC23E8256E0AD000800A43 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 58ZACZB2L8;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		27AC23E9256E0AD000800A43 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 58ZACZB2L8;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		27AC2402256E132000800A43 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -439,20 +338,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		27AC23DB256E0AD000800A43 /* Build configuration list for PBXProject "SortDescriptor" */ = {
+		27AC23DB256E0AD000800A43 /* Build configuration list for PBXProject "MRUtils" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				27AC23E5256E0AD000800A43 /* Debug */,
 				27AC23E6256E0AD000800A43 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		27AC23E7256E0AD000800A43 /* Build configuration list for PBXNativeTarget "SortDescriptor" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				27AC23E8256E0AD000800A43 /* Debug */,
-				27AC23E9256E0AD000800A43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -467,6 +357,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		27FDFE06257DB0D100E490F5 /* MRUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MRUtils;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 27AC23D8256E0AD000800A43 /* Project object */;
 }
