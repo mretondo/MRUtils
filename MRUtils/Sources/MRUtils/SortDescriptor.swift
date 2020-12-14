@@ -70,7 +70,7 @@ public func sortDescriptor<Root, Value> (
 ///
 ///     let sortByFirstName: SortDescriptor<Person> = sortDescriptor(key: { $0.first }, by: String.localizedStandardCompare)
 ///     let sortByLastName: SortDescriptor<Person> = sortDescriptor(key: { $0.last }, by: String.localizedStandardCompare)
-///     var combinedSortDescriptors: SortDescriptor<Person> = combine(sortDescriptors: [sortByLastName, sortByFirstName)
+///     var combinedSortDescriptors: SortDescriptor<Person> = combine(sortDescriptors: [sortByLastName, sortByFirstName])
 ///
 /// - Parameter sortDescriptors: [SortDescriptor]
 public func combine<Root> (sortDescriptors: [SortDescriptor<Root>]) -> SortDescriptor<Root>
