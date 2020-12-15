@@ -73,7 +73,7 @@ public func sortDescriptor<Root, Value> (
 ///     var combinedSortDescriptors: SortDescriptor<Person> = combine(sortDescriptors: [sortByLastName, sortByFirstName])
 ///
 /// - Parameter sortDescriptors: [SortDescriptor]
-public func combine<Root> (sortDescriptors: [SortDescriptor<Root>]) -> SortDescriptor<Root>
+public func combineSortDescriptors<Root> (using sortDescriptors: [SortDescriptor<Root>]) -> SortDescriptor<Root>
 {
     return { lhs, rhs in
         for areInIncreasingOrder in sortDescriptors {

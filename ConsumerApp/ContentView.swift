@@ -49,9 +49,9 @@ let sortByFirstName: SortDescriptor<Person> = sortDescriptor(key: { $0.first }, 
 let sortByLastName: SortDescriptor<Person> = sortDescriptor(key: { $0.last }, by: String.localizedStandardCompare)
 let sortByYearDesending: SortDescriptor<Person> = sortDescriptor(key: { $0.yearOfBirth }, by: >)
 
-var combinedSortDescriptors: SortDescriptor<Person> = combine(sortDescriptors: [sortByLastName, sortByFirstName, sortByYear])
+var combinedSortDescriptors: SortDescriptor<Person> = combineSortDescriptors (using: [sortByLastName, sortByFirstName, sortByYear])
 var asendingPeople = people.sorted(by: combinedSortDescriptors)
-var desendingPeople = people.sorted(by: combine(sortDescriptors: [sortByLastName, sortByFirstName, sortByYearDesending]))
+var desendingPeople = people.sorted(by: combineSortDescriptors (using: [sortByLastName, sortByFirstName, sortByYearDesending]))
 
 //
 // Sort Finder filenames only by their extensions
