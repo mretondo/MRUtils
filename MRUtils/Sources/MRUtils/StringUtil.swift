@@ -1,9 +1,22 @@
 //
 //  StringUtil.swift
 //
-//  Created by Mike Retondo on 9/25/19.
-//  Copyright © 2019 Mike Retondo. All rights reserved.
+// Copyright © 2017 Mike Retondo
 //
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without restriction,
+// including without limitation the rights to use, copy, modify, merge, publish, distribute,
+// sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import Foundation
 
@@ -11,38 +24,38 @@ public extension StringProtocol {
 
     // [i]
     subscript(i: Int) -> Character {
-        return self[self.index(at: i)]
+        return self[index(at: i)]
     }
 
     // [i..<j]
-    subscript(range: Range<Int>) -> Self.SubSequence {
-        let i = self.index(at: range.lowerBound)
-        let j = self.index(at: range.upperBound)
+    subscript(range: Range<Int>) -> SubSequence {
+        let i = index(at: range.lowerBound)
+        let j = index(at: range.upperBound)
         return self[i..<j]
     }
 
     // [i...j]
-    subscript(range: ClosedRange<Int>) -> Self.SubSequence {
-        let i = self.index(at: range.lowerBound)
-        let j = self.index(at: range.upperBound)
+    subscript(range: ClosedRange<Int>) -> SubSequence {
+        let i = index(at: range.lowerBound)
+        let j = index(at: range.upperBound)
         return self[i...j]
     }
 
     // [..<i]
-    subscript(range: PartialRangeUpTo<Int>) -> Self.SubSequence {
-        let i = self.index(at: range.upperBound)
+    subscript(range: PartialRangeUpTo<Int>) -> SubSequence {
+        let i = index(at: range.upperBound)
         return self[..<i]
     }
 
     // [...i]
-    subscript(range: PartialRangeThrough<Int>) -> Self.SubSequence {
-        let i = self.index(at: range.upperBound)
+    subscript(range: PartialRangeThrough<Int>) -> SubSequence {
+        let i = index(at: range.upperBound)
         return self[...i]
     }
 
     // [i...]
-    subscript(range: PartialRangeFrom<Int>) -> Self.SubSequence {
-        let i = self.index(at: range.lowerBound)
+    subscript(range: PartialRangeFrom<Int>) -> SubSequence {
+        let i = index(at: range.lowerBound)
         return self[i...]
     }
 }
@@ -54,11 +67,11 @@ public extension StringProtocol {
     /// - Parameters:
     ///   - string: The string to search for.
     /// - Returns: An array of String.Index.
-    func indices(of string: String) -> [Self.Index] {
-        var indices = [Self.Index]()
-        var start = self.startIndex
-        while start < self.endIndex, let range = self.range(of: string, range: start..<self.endIndex), !range.isEmpty {
-            //            let IndexDistance: String.IndexDistance = distance(from: self.startIndex, to: range.lowerBound)
+    func indices(of string: String) -> [Index] {
+        var indices = [Index]()
+        var start = startIndex
+        while start < endIndex, let range = range(of: string, range: start..<endIndex), !range.isEmpty {
+            //            let IndexDistance: String.IndexDistance = distance(from: startIndex, to: range.lowerBound)
             indices.append(range.lowerBound)
             start = range.upperBound
         }
@@ -77,24 +90,24 @@ public extension StringProtocol {
     ///   as the result of `n` calls to `index(after:)`.
     ///   If `n` is negative, this is the same value as the result of `-n` calls
     ///   to `index(before:)`.
-    func index(at n: String.IndexDistance) -> Self.Index {
+    func index(at n: String.IndexDistance) -> Index {
         if n == 0 {
-            return self.startIndex
+            return startIndex
         } else if n >= 0 {
-            return self.index(self.startIndex, offsetBy: n)
+            return index(startIndex, offsetBy: n)
         } else {
-            return self.index(self.endIndex, offsetBy: n)
+            return index(endIndex, offsetBy: n)
         }
     }
 
     @inline(__always)
-    func indexRangeFor(range: Range<Int>) -> Range<Self.Index> {
-        return self.index(at: range.lowerBound)..<self.index(at: range.upperBound)
+    func indexRangeFor(range: Range<Int>) -> Range<Index> {
+        return index(at: range.lowerBound)..<index(at: range.upperBound)
     }
 
     @inline(__always)
-    func indexRangeFor(range: ClosedRange<Int>) -> ClosedRange<Self.Index> {
-        return self.index(at: range.lowerBound)...self.index(at: range.upperBound)
+    func indexRangeFor(range: ClosedRange<Int>) -> ClosedRange<Index> {
+        return index(at: range.lowerBound)...index(at: range.upperBound)
     }
 }
 
@@ -104,13 +117,13 @@ public extension StringProtocol {
     ///
     /// - Parameters:
     ///   - range: A half-open interval from a lower bound up to, but not including, an upper bound.
-    func substring(with range: Range<Int>) -> Self.SubSequence? {
-        let r = 0...self.count
+    func substring(with range: Range<Int>) -> SubSequence? {
+        let r = 0...count
 
         guard r.contains(range.lowerBound) && r.contains(range.upperBound) else { return nil }
 
-        let start = self.index(at: range.lowerBound)
-        let end = self.index(at: range.upperBound)
+        let start = index(at: range.lowerBound)
+        let end = index(at: range.upperBound)
 
         return self[start..<end]
     }
@@ -119,33 +132,33 @@ public extension StringProtocol {
     ///
     /// - Parameters:
     ///   - range: A ClosedRange interval from a lower bound up to, but not including, an upper bound.
-    func substring(with range: ClosedRange<Int>) -> Self.SubSequence? {
-        let r = 0..<self.count
+    func substring(with range: ClosedRange<Int>) -> SubSequence? {
+        let r = 0..<count
 
         guard r.contains(range.lowerBound) && r.contains(range.upperBound) else { return nil }
 
-        let start = self.index(at: range.lowerBound)
-        let end = self.index(at: range.upperBound)
+        let start = index(at: range.lowerBound)
+        let end = index(at: range.upperBound)
 
         return self[start...end]
     }
 
     /// 'i' can be negitive to go in reverse direction
-    func substring(from i: Int) -> Self.SubSequence? {
-        guard abs(i) < self.count else { return nil }
+    func substring(from i: Int) -> SubSequence? {
+        guard abs(i) < count else { return nil }
 
-        let fromIndex = i >= 0 ? self.index(at: i) : self.index(self.endIndex, offsetBy: i)
-        let toIndex   = i >= 0 ? self.endIndex : self.startIndex
+        let fromIndex = i >= 0 ? index(at: i) : index(endIndex, offsetBy: i)
+        let toIndex   = i >= 0 ? endIndex : startIndex
 
         return i >= 0 ? self[fromIndex..<toIndex] : self[toIndex..<fromIndex]
     }
 
     /// 'i' can be negitive to go in reverse direction
-    func substring(to i: Int) -> Self.SubSequence? {
-        guard abs(i) <= self.count else { return nil }
+    func substring(to i: Int) -> SubSequence? {
+        guard abs(i) <= count else { return nil }
 
-        let fromIndex = i >= 0 ? self.startIndex : self.endIndex
-        let toIndex   = i >= 0 ? self.index(at: i) : self.index(self.endIndex, offsetBy: i)
+        let fromIndex = i >= 0 ? startIndex : endIndex
+        let toIndex   = i >= 0 ? index(at: i) : index(endIndex, offsetBy: i)
 
         return i >= 0 ? self[fromIndex..<toIndex] : self[toIndex..<fromIndex]
     }
@@ -153,7 +166,7 @@ public extension StringProtocol {
 
 public extension StringProtocol {
     //
-    // infixs to complement prefix and suffix
+    // infix is to complement prefix and suffix
     //
 
     /// Companion function to String.prefix() and String.suffix(). It is similar to
@@ -187,7 +200,7 @@ public extension StringProtocol {
     ///     is set so the remaining elements of the collection will be returned.
     /// - Returns: A subsequence starting from `position` up to `maxLength`
     ///   elements in the collection.
-    func infix(from position: Int, maxLength: Int = Int.max) -> Self.SubSequence {
+    func infix(from position: Int, maxLength: Int = Int.max) -> SubSequence {
         // if 'position' is beyond the last charecter position then set 'start' to 'endIndex'
         let start = index(startIndex, offsetBy: numericCast(position), limitedBy: endIndex) ?? endIndex
 
@@ -209,7 +222,7 @@ public extension StringProtocol {
     ///   returns `false` it will not be called again.
     ///
     /// - Complexity: O(*n*), where *n* is the length of the collection.
-    func infix(from position: Int, while predicate: (Element) throws -> Bool) rethrows -> Self.SubSequence {
+    func infix(from position: Int, while predicate: (Element) throws -> Bool) rethrows -> SubSequence {
         // if 'position' is beyond the last charecter position then set 'start' to 'endIndex'
         let start = index(startIndex, offsetBy: numericCast(position), limitedBy: endIndex) ?? endIndex
 
@@ -222,12 +235,12 @@ public extension StringProtocol {
     }
 
     @inline(__always)
-    func infix(from start: String.Index, upTo end: String.Index) -> Self.SubSequence {
+    func infix(from start: String.Index, upTo end: String.Index) -> SubSequence {
         return self[start..<end]
     }
 
     @inline(__always)
-    func infix(from start: String.Index, through end: String.Index) -> Self.SubSequence {
+    func infix(from start: String.Index, through end: String.Index) -> SubSequence {
         return self[start...end]
     }
 }
@@ -353,15 +366,13 @@ public extension StringProtocol {
 
 public extension String {
 
-    /// ONLY USE WITH PURE ASCII STRINGS!!!
-    ///
     /// Returns the number of bytes used to hold the string. This works because
     /// Swift 5 now uses UTF-8 as it's backing store.
     @inline(__always)
     var size: Int {
         // utf8 will treat \r\n as 2 character so "\r\n".utf8.count returns 2
         // Unicode treats \r\n as 1 character so "\r\n".count returns 1
-        get {self.utf8.count}
+        get {utf8.count}
     }
 }
 
@@ -385,7 +396,7 @@ public extension String {
     /// Returns a new string by replacing matches of pattern with replacement.
     func replacedMatches(of pattern: String, with replacement: String) -> String {
         let regex = try! NSRegularExpression(pattern: pattern)
-        let range = NSMakeRange(0, self.utf16.count)
+        let range = NSMakeRange(0, utf16.count)
 
         return regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: replacement)
     }
@@ -393,7 +404,7 @@ public extension String {
     /// Returns a new string in which all occurrences of a target string
     /// in a specified range of the string are removed.
     func removedOccurrences(of occurrence: String, options: String.CompareOptions = []) -> String {
-        return self.replacingOccurrences(of: occurrence, with: "", options: options)
+        return replacingOccurrences(of: occurrence, with: "", options: options)
     }
 }
 
@@ -401,7 +412,7 @@ public extension String {
 
     /// Returns a new string made by removing all whitespacesAndNewlines.
     func trimmingWhitepaceAndNewlines() -> String {
-        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     /// Returns a new string made by removing all leading whitespacesAndNewlines.
@@ -479,18 +490,18 @@ public extension String {
         }
 
         var end = pin
-        while end < self.count && self[end] == " " {
+        while end < count && self[end] == " " {
             end += 1
         }
 
         var newString = self
         if start == end {   // No space
-            newString.replaceSubrange(self.index(at: start)..<self.index(at: start), with: " ")
+            newString.replaceSubrange(index(at: start)..<index(at: start), with: " ")
         } else if end - start == 1 {    // If one space
-            let range = self.index(at: start)..<self.index(at: end)
+            let range = index(at: start)..<index(at: end)
             newString.replaceSubrange(range, with: " ")
         } else {    // More than one space
-            let range = self.index(at: start)..<self.index(at: end)
+            let range = index(at: start)..<index(at: end)
             newString.replaceSubrange(range, with: " ")
         }
         return (start, newString)
@@ -498,14 +509,14 @@ public extension String {
 
     func selectWord(pin: Int) -> Range<String.Index>? {
         guard let range: Range<Int> = selectWord(pin: pin) else { return nil }
-        return self.indexRangeFor(range: range)
+        return indexRangeFor(range: range)
     }
 
     func selectWord(pin: Int) -> Range<Int>? {
         var pin = pin
 
-        guard pin <= self.count else { return nil }
-        guard self.count > 1  else { return nil }
+        guard pin <= count else { return nil }
+        guard count > 1  else { return nil }
 
         // Move pin to one position left when it is after last character
         let invalidLastChars = CharacterSet(charactersIn: " :!?,.")
