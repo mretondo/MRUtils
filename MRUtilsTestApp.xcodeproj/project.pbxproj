@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -125,8 +125,8 @@
 					};
 				};
 			};
-			buildConfigurationList = 27AC23DB256E0AD000800A43 /* Build configuration list for PBXProject "MRUtils" */;
-			compatibilityVersion = "Xcode 11.0";
+			buildConfigurationList = 27AC23DB256E0AD000800A43 /* Build configuration list for PBXProject "MRUtilsTestApp" */;
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -338,7 +338,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		27AC23DB256E0AD000800A43 /* Build configuration list for PBXProject "MRUtils" */ = {
+		27AC23DB256E0AD000800A43 /* Build configuration list for PBXProject "MRUtilsTestApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				27AC23E5256E0AD000800A43 /* Debug */,
