@@ -105,7 +105,7 @@ struct ContentView: View {
             Text(files.description).padding()
             Text(filesAsending.description).padding()
             Text(filesDescending).padding()
-            Text(filename)
+            Text(filename[2...6])   // use StringUtil
         }
     }
 }
