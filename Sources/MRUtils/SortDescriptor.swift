@@ -84,7 +84,7 @@ public func sortDescriptor<Root, Value> (
 ///
 ///     let sortByFirstName: SortDescriptor<Person> = sortDescriptor(key: { $0.first }, by: String.localizedStandardCompare)
 ///     let sortByLastName: SortDescriptor<Person> = sortDescriptor(key: { $0.last }, by: String.localizedStandardCompare)
-///     var combinedSortDescriptors: SortDescriptor<Person> = combine(sortDescriptors: [sortByLastName, sortByFirstName])
+///     var combinedSortDescriptors: SortDescriptor<Person> = combineSortDescriptors(using: [sortByLastName, sortByFirstName])
 ///
 /// - Parameter sortDescriptors: [SortDescriptor]
 public func combineSortDescriptors<Root> (using sortDescriptors: [SortDescriptor<Root>]) -> SortDescriptor<Root>
@@ -103,6 +103,21 @@ public func combineSortDescriptors<Root> (using sortDescriptors: [SortDescriptor
 
         return false
     }
+}
+
+/// Combines multiple sort descriptors into a single sort descriptor.
+/// Syntactic sugar for:
+///     public func combineSortDescriptors<Root> (using sortDescriptors: [SortDescriptor<Root>]) -> SortDescriptor<Root>
+///
+/// Allows calling like so:
+///     let sortByFirstName: SortDescriptor<Person> = sortDescriptor(key: { $0.first }, by: String.localizedStandardCompare)
+///     let sortByLastName: SortDescriptor<Person> = sortDescriptor(key: { $0.last }, by: String.localizedStandardCompare)
+///     var combinedSortDescriptors: SortDescriptor<Person> = combineSortDescriptors(sortByLastName, sortByFirstName)
+///
+/// - Parameter sortDescriptors: SortDescriptor<Root>...
+public func combineSortDescriptors<Root> (_ sortDescriptors: SortDescriptor<Root>...) -> SortDescriptor<Root>
+{
+    return combineSortDescriptors(using: sortDescriptors)
 }
 
 ///
