@@ -492,7 +492,7 @@ public extension String {
     //
     // convert the string to an UIImage
     //
-    func textToImage(ofFontSize fontSize: CGFloat) -> UIImage? {
+    func textToImage(withFontSize fontSize: CGFloat) -> UIImage? {
         let nsString = (self as NSString)
         let font = UIFont.systemFont(ofSize: fontSize) // you can change your font size here
         let stringAttributes = [NSAttributedString.Key.font: font]
@@ -590,5 +590,23 @@ public extension String {
     var condensedWhitespace: String {
         let components = self.components(separatedBy: .whitespaces)
         return components.filter { !$0.isEmpty }.joined(separator: " ")
+    }
+
+    func isPalindrome(inputString: String) -> Bool {
+        let stringLength = inputString.count
+        var position = 0
+
+        while position < stringLength / 2 {
+            let startIndex = inputString.index(inputString.startIndex, offsetBy: position)
+            let endIndex = inputString.index(inputString.endIndex, offsetBy: -position - 1)
+
+            if inputString[startIndex] == inputString[endIndex] {
+                position += 1
+            } else {
+                return false
+            }
+        }
+
+        return true
     }
 }
