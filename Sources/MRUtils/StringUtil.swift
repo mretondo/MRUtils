@@ -18,12 +18,16 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-//: Playground - noun: a place where people can play
-
-import Swift
 import Foundation
+#if os(iOS)
+    import UIKit
+#endif
 
 public extension StringProtocol {
+
+    //
+    // DON'T USE THESE SUBSCRIPTS WITHIN A LOOP AS IT WILL BE A HUGE PERFORMACE HIT
+    //
 
     // [i]
     subscript(i: Int) -> Character {
@@ -79,11 +83,11 @@ public extension StringProtocol {
     ///   to `index(before:)`.
     func index(at n: String.IndexDistance) -> Index {
         if n == 0 {
-            return self.startIndex
+            return startIndex
         } else if n >= 0 {
-            return index(self.startIndex, offsetBy: n)
+            return index(startIndex, offsetBy: n)
         } else {
-            return index(self.endIndex, offsetBy: n)
+            return index(endIndex, offsetBy: n)
         }
     }
 
@@ -134,8 +138,8 @@ public extension StringProtocol {
     func substring(from i: Int) -> SubSequence? {
         guard abs(i) < count else { return nil }
 
-        let fromIndex = i >= 0 ? index(at: i) : index(self.endIndex, offsetBy: i)
-        let toIndex   = i >= 0 ? self.endIndex : self.startIndex
+        let fromIndex = i >= 0 ? index(at: i) : index(endIndex, offsetBy: i)
+        let toIndex   = i >= 0 ? endIndex : startIndex
 
         return i >= 0 ? self[fromIndex..<toIndex] : self[toIndex..<fromIndex]
     }
@@ -144,8 +148,8 @@ public extension StringProtocol {
     func substring(to i: Int) -> SubSequence? {
         guard abs(i) <= count else { return nil }
 
-        let fromIndex = i >= 0 ? self.startIndex : self.endIndex
-        let toIndex   = i >= 0 ? index(at: i) : index(self.endIndex, offsetBy: i)
+        let fromIndex = i >= 0 ? startIndex : endIndex
+        let toIndex   = i >= 0 ? index(at: i) : index(endIndex, offsetBy: i)
 
         return i >= 0 ? self[fromIndex..<toIndex] : self[toIndex..<fromIndex]
     }
@@ -153,7 +157,7 @@ public extension StringProtocol {
 
 public extension StringProtocol {
     //
-    // infix is to complement prefix and suffix
+    // infix complements prefix and suffix
     //
 
     /// Companion function to String.prefix() and String.suffix(). It is similar to
@@ -232,8 +236,7 @@ public extension StringProtocol {
     }
 }
 
-extension StringProtocol {
-
+public extension StringProtocol {
     /// Returns the index? starting where the subString was found.
     ///
     ///    let str = "Hello, playground, playground, playground"
@@ -339,10 +342,10 @@ public extension String {
 
     /// Returns the number of bytes used to hold the string. This works because
     /// Swift 5 now uses UTF-8 as it's backing store.
-    /// utf8 will treat \r\n as 2 characters so "\r\n".utf8.count returns 2
-    /// Unicode treats \r\n as 1 character so "\r\n".count returns 1
     @inline(__always)
     var size: Int {
+        // utf8 will treat \r\n as 2 character so "\r\n".utf8.count returns 2
+        // Unicode treats \r\n as 1 character so "\r\n".count returns 1
         get {utf8.count}
     }
 }
@@ -464,7 +467,105 @@ public extension String {
     }
 }
 
+#if os(iOS)
 public extension String {
+    //
+    // convert the string to an UIImage
+    //
+    func textToImage(withFontSize fontSize: CGFloat) -> UIImage? {
+        let nsString = (self as NSString)
+        let font = UIFont.systemFont(ofSize: fontSize) // you can change your font size here
+        let stringAttributes = [NSAttributedString.Key.font: font]
+
+        // calculate size of image
+        var imageSize = nsString.size(withAttributes: stringAttributes)
+        // raise fractional size values to the nearest higher integer
+        imageSize.height = ceil(imageSize.height)
+        imageSize.width = ceil(imageSize.width)
+
+        UIGraphicsBeginImageContextWithOptions(imageSize, false, 0.0)
+
+        // fill image with color, in this case to a transparent background
+        UIColor.clear.set()
+
+        let rect = CGRect(origin: .zero, size: imageSize)
+        UIRectFill(rect)
+
+        // draw text within current graphics context
+        nsString.draw(at: .zero, withAttributes: stringAttributes)
+
+        // create image from context
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+
+        UIGraphicsEndImageContext()
+
+        return image ?? UIImage()
+    }
+}
+#endif
+
+public extension String {
+
+    func lineOneSpaceAt(pin: Int) -> (Int, String) {
+
+        var start = pin
+        while start > 0 && self[start - 1] == " " {
+            start -= 1
+        }
+
+        var end = pin
+        while end < count && self[end] == " " {
+            end += 1
+        }
+
+        var newString = self
+        if start == end {   // No space
+            newString.replaceSubrange(index(at: start)..<index(at: start), with: " ")
+        } else if end - start == 1 {    // If one space
+            let range = index(at: start)..<index(at: end)
+            newString.replaceSubrange(range, with: " ")
+        } else {    // More than one space
+            let range = index(at: start)..<index(at: end)
+            newString.replaceSubrange(range, with: " ")
+        }
+        return (start, newString)
+    }
+
+    func selectWord(pin: Int) -> Range<String.Index>? {
+        guard let range: Range<Int> = selectWord(pin: pin) else { return nil }
+        return indexRangeFor(range: range)
+    }
+
+    func selectWord(pin: Int) -> Range<Int>? {
+        var pin = pin
+
+        guard pin <= count else { return nil }
+        guard count > 1  else { return nil }
+
+        // Move pin to one position left when it is after last character
+        let invalidLastChars = CharacterSet(charactersIn: " :!?,.")
+        var validChars = CharacterSet.alphanumerics
+        validChars.insert(charactersIn: "@_")
+
+        if (pin > 0), let _ = (String(self[pin])).rangeOfCharacter(from: invalidLastChars) {
+            if let _ = (String(self[pin - 1])).rangeOfCharacter(from: validChars) {
+                pin -= 1
+            }
+        }
+
+        var start = pin
+        while start >= 0 && (String(self[start])).rangeOfCharacter(from: validChars) != nil {
+            start -= 1
+        }
+
+        var end = pin
+        while end < count && (String(self[end])).rangeOfCharacter(from: validChars) != nil {
+            end += 1
+        }
+        if start == end { return nil }
+        return start + 1..<end
+    }
+
     /// All multiple whitespaces are replaced by one whitespace
     var condensedWhitespace: String {
         let components = self.components(separatedBy: .whitespaces)
